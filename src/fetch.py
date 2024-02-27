@@ -61,5 +61,4 @@ def subscriptionFetch():
             if x: video.append(x.group(1))
 
             videoList.append(video)
-    print(videoList)
     return sorted(videoList, key=lambda x: x[3], reverse=True)
