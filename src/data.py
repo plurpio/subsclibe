@@ -24,7 +24,7 @@ def subscriptionWrite():
 
 
 def subscriptionAdd(channel):
-    if len(channel) == 24:
+    if len(channel) == 24 and channel not in data["subscriptions"]:
         data["subscriptions"].append(channel)
         return "added channel "+channel+" successfully"
     else:
