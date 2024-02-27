@@ -2,7 +2,7 @@ import re
 import urllib.error
 import urllib.parse
 import urllib.request
-import data, channel
+import data
 
 def channelFetch(channel):
     videoList = []
@@ -32,7 +32,6 @@ def channelFetch(channel):
 
 def subscriptionFetch():
     videoList = []
-    print(data.subscriptionList())
     for i in data.subscriptionList():
         feed = urllib.request.urlopen("https://www.youtube.com/feeds/videos.xml?channel_id=" + i).read().decode("utf-8")
         for y in feed.split("yt:video:"):
@@ -55,4 +54,5 @@ def subscriptionFetch():
             if x: video.append(x.group(1))
             
             videoList.append(video)
-    return videoList
+    print(videoList)
+    return sorted(videoList, key=lambda x: x[3], reverse=True)
