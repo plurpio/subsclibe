@@ -1,7 +1,12 @@
-import json, re
+"Handles arguments given to main.py"
+
+import json
+import re
+import sys
+
 import data
 
-help = """
+argHelp = """
 Subsclibe - A simple CLI application to manage and view subscriptions on Youtube.
 
 ARGUMENTS
@@ -20,17 +25,17 @@ def args(args):
     if args[1] == "convert" and len(args) == 4:
         if args[2] == "piped":
             try:
-                with open(args[3], "r") as f:
+                with open(args[3], "r", encoding='utf-8') as f:
                     jsondata = json.load(f)
                     for i in jsondata["subscriptions"]:
-                        print("Found subscription:", re.findall("https:\/\/www\.youtube\.com\/channel\/(.*)", i["url"])[0])
-                        data.subscriptionAdd(re.findall("https:\/\/www\.youtube\.com\/channel\/(.*)", i["url"])[0])
+                        print("Found subscription:", re.findall(r"https:\/\/www\.youtube\.com\/channel\/(.*)", i["url"])[0])
+                        data.subscriptionAdd(re.findall(r"https:\/\/www\.youtube\.com\/channel\/(.*)", i["url"])[0])
             except:
                 print("invalid file")
-            
-        elif args[3] == "inv" or "invidious":
+
+        elif args[3] == "invidious":
             try:
-                with open(args[3], "r") as f:
+                with open(args[3], "r", encoding='utf-8') as f:
                     jsondata = json.load(f)
                     for i in jsondata["subscriptions"]:
                         print("Found subscription:", i)
@@ -38,8 +43,8 @@ def args(args):
             except:
                 print("invalid file")
         data.subscriptionWrite()
-        quit()
+        sys.exit()
 
     else:
-        print(help)
-        quit()
+        print(argHelp)
+        sys.exit()

@@ -1,9 +1,6 @@
-print("Starting subsclibe...")
+"Main Executeable"
 
-import sys # Handling arguments
+import sys
 import arguments
-arguments.args(sys.argv)
 
-import data
-import channel
-import fetch
+arguments.args(sys.argv)
