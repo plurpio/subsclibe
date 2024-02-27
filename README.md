@@ -1,4 +1,6 @@
-# subsclibe
-> subsCLIbe haha? ik its a bad pun
+<div align = center>
+<img src="https://github.com/plurpio/subsclibe/blob/stable/gh/banner.png?raw=true" width="640" height="320" alt="banner">
 
-Subsclibe is a CLI application to manage subscriptions and play YouTube videos.
+*subsCLIbe haha? ik its a bad pun*
+
+<div align = left>
